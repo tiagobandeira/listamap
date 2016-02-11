@@ -207,9 +207,15 @@ export class ProductsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductsPage');
+    this.listaProduto()
   }
   runProductPage(produto){
     this.navCtrl.push(ProductPage, {produto:produto});
+  }
+  listaProduto(){
+    this.items.forEach(element => {
+      console.log(element)
+    });
   }
   criarCart(nomeLista){
     //this.navCtrl.push(CriarListaPage);

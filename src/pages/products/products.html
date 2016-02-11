@@ -16,7 +16,7 @@
 <ion-content>
   <ion-grid >
     <ion-row >
-      <ion-col col-6 *ngFor="let item of items | async">
+      <ion-col col-6 *ngFor="let item of Produtos">
         <ion-card (tap)="runProductPage(item)">
           <img [src] = "item.imagem">
           <ion-item >

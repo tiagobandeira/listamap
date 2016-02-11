@@ -219,6 +219,7 @@ export class MapPage {
         this.loadMap();
       });
       this.productsIds = this.navParams.get("cart").produtos;
+      console.log(this.productsIds)
   }
 
   ionViewDidLoad() {
@@ -283,8 +284,8 @@ export class MapPage {
     for (let i = 0; i < this.productsIds.length; i++) {
       points.push(
         {
-          lat:  this.Produtos[this.productsIds[i]].latitude, 
-          lng:  this.Produtos[this.productsIds[i]].longitude
+          lat:  this.Produtos[this.productsIds[i][0]].latitude, 
+          lng:  this.Produtos[this.productsIds[i][0]].longitude
         }
       );
     }

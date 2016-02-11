@@ -38,7 +38,7 @@ export class ProductPage {
   }
   addProduto(produto_id, lista){
     let listaIndex = this.findIndexListaProduto(lista);
-    this.updateListaProduto(listaIndex, produto_id);
+    this.updateListaProduto(listaIndex, [produto_id, this.count]);
     //localStorage.setItem(lista_produto_key_name, JSON.stringify(iten));
     //this.presentToast();
   }

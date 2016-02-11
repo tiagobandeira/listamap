@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>carts</ion-title>
   </ion-navbar>
 
@@ -14,26 +14,24 @@
 
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let cart of carts" (tap) = "openMapPage(cart)">
-      <ion-avatar item-start>
-        <!--<img [src]="produto.imagem">-->
-        <ion-icon name="cart"></ion-icon>
-      </ion-avatar>
-      <h2>{{ cart.nome }}</h2>
-      <!--<p>R$ {{ produto.preco }}</p>
-      
-      <button ion-button  item-end  (click)="openMapPage(cart)">
-          <ion-icon name="navigate"></ion-icon>
-          visualizar
-      </button>
-
-      
-      <button ion-button item-end color="danger" (click)="removeProduto(produto.id)">
-          <ion-icon name="trash"></ion-icon>
-      </button>
-      -->
+  <ion-card  *ngFor="let cart of carts" (click) = "openMapPage(cart)">
+    <ion-item>
+        <ion-icon item-start large color="secondary" name="cart"></ion-icon>
+        <h2>{{ cart.nome }}</h2>
+        <p>{{ cart.produtos.length}} Produtos</p>
+        <p item-end>R$ {{ getPrice(cart.produtos) }} </p>
+        <!--<p>R$ {{ produto.preco }}</p>
         
+        <button ion-button  item-end  (click)="openMapPage(cart)">
+            <ion-icon name="navigate"></ion-icon>
+            visualizar
+        </button>
+  
+        
+        <button ion-button item-end color="danger" (click)="removeProduto(produto.id)">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+        -->
     </ion-item>
-  </ion-list>
+  </ion-card>
 </ion-content>
