@@ -86,8 +86,8 @@
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.0" />
     </plugin>
-    <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
         <variable name="REVERSED_CLIENT_ID" value="826917379070-64v01t118482vtf52joam3b0tdnt4skt.apps.googleusercontent.com" />
     </plugin>
+    <engine name="android" spec="7.0.0" />
 </widget>

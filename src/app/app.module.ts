@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { MapPage } from '../pages/map/map';
+import { ProductsPage } from '../pages/products/products';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MapPage } from '../pages/map/map';
     ContactPage,
     HomePage,
     TabsPage,
-    MapPage
+    MapPage,
+    ProductsPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { MapPage } from '../pages/map/map';
     ContactPage,
     HomePage,
     TabsPage,
-    MapPage
+    MapPage,
+    ProductsPage
   ],
   providers: [
     StatusBar,
