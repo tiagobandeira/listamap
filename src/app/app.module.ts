@@ -14,6 +14,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { MapPage } from '../pages/map/map';
 import { ProductsPage } from '../pages/products/products';
 import { ProductPage } from '../pages/product/product';
+import { CartsPage } from '../pages/carts/carts';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductPage } from '../pages/product/product';
     MapPage,
     ProductsPage,
     ProductPage,
+    CartsPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { ProductPage } from '../pages/product/product';
     TabsPage,
     MapPage,
     ProductsPage,
-    ProductPage
+    ProductPage,
+    CartsPage
   ],
   providers: [
     StatusBar,
