@@ -19,10 +19,10 @@ export class CartsPage {
   public carts;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CartPage');
+  
+  ionViewDidEnter() {
     this.carts = this.getProdutoLista();
+    console.log('ionViewDidLoad CartPage');
   }
   getProdutoLista(){
     return JSON.parse(localStorage.getItem(lista_produto_key_name));
