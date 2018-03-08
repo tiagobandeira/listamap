@@ -9,7 +9,6 @@ npm  : 5.5.1
 Ionic (Ionic CLI) : 3.19.1
 Node : v8.9.1
 ```
-<<<<<<< HEAD
 ### Installing
 
 Install listamapp
@@ -18,13 +17,11 @@ Install listamapp
 $npm install
 ```
 
-Add platform
+Add platform and run
 
 ```
-$ionic cordova platform add android
+$ionic cordova run android
 ```
-=======
->>>>>>> dcdbb7cc06bd4f928e230e7284cc2b44507183a0
 ## Authors
 
 * **Tiago Bandeira** 
