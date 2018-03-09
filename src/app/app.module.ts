@@ -15,6 +15,12 @@ import { MapPage } from '../pages/map/map';
 import { ProductsPage } from '../pages/products/products';
 import { ProductPage } from '../pages/product/product';
 import { CartsPage } from '../pages/carts/carts';
+import { LoginPage } from '../pages/login/login';
+
+//firebase
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { firebase } from '../credentials/firebase';
 
 @NgModule({
   declarations: [
@@ -26,11 +32,14 @@ import { CartsPage } from '../pages/carts/carts';
     MapPage,
     ProductsPage,
     ProductPage,
-    CartsPage
+    CartsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebase.config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +51,8 @@ import { CartsPage } from '../pages/carts/carts';
     MapPage,
     ProductsPage,
     ProductPage,
-    CartsPage
+    CartsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

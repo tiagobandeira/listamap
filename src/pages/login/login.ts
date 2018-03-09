@@ -27,6 +27,12 @@ export class LoginPage {
     public navParams: NavParams,
     public googlePlus: GooglePlus,
     public afAuth: AngularFireAuth) {
+      this.afAuth.authState.take(1).subscribe(lg => {
+        console.log(lg);
+        if(lg.uid){
+          this.navCtrl.setRoot(TabsPage);
+        }
+      })
   }
 
   ionViewDidLoad() {
@@ -63,7 +69,7 @@ export class LoginPage {
   //Login with google plus
   logingGooglePlus(){
     this.googlePlus.login({}).then(res => {
-      this.loginData.email = res.displayName;
+      this.loginData.email = res.email;
       this.loginData.password = res.displayName; + res.userId;
       
       this.register(this.loginData);
