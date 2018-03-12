@@ -49,6 +49,7 @@ export class LoginPage {
       }  
     }
     catch (e) {
+      alert("Erro: " + e);
       console.error(e);
     }
   }
@@ -64,6 +65,7 @@ export class LoginPage {
         this.navCtrl.setRoot(TabsPage);
       }
     } catch (e) {
+      alert("Erro: " + e);
       console.error(e);
     }
   }
@@ -75,6 +77,10 @@ export class LoginPage {
       
       this.register(this.loginData);
 
-    }).catch(e => console.error(e))
+    }).catch(e => {
+      alert("Erro: " + e);
+      console.error(e);
+    }
+    )
   }
 }
