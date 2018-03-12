@@ -27,12 +27,13 @@ export class LoginPage {
     public navParams: NavParams,
     public googlePlus: GooglePlus,
     public afAuth: AngularFireAuth) {
+      /*
       this.afAuth.authState.take(1).subscribe(lg => {
         console.log(lg);
         if(lg.uid){
           this.navCtrl.setRoot(TabsPage);
         }
-      })
+      })*/
   }
 
   ionViewDidLoad() {

@@ -1,3 +1,14 @@
 page-product {
-
+	#image{
+		border: solid 1px #eee;
+	}
+	#count{
+		display: flex;
+		border: solid 1px #eee;
+		
+	}
+	ion-input, ion-textarea {
+		width: 10%;
+		
+	}
 }

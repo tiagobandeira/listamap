@@ -15,40 +15,84 @@
 
 <ion-content>
     <ion-card *ngIf="produto">
+          <ion-item>
+            <ion-icon name="basket" item-left large ></ion-icon>
+            <h2>{{produto.nome}}</h2>
+            <p>{{produto.descricao}} </p>
+          </ion-item>
+          <ion-grid >
+              <ion-row >
+                  <ion-col col-6>
+                      <div id="image">
+                        <img  [src]="produto.imagem">
+                      </div>
+                  </ion-col>
+                  <ion-col col-6>
+                      <ion-item>
+                        <h1>R$ {{produto.preco}}</h1>
+                        <p>12 x R$ {{ parcela }}</p>
+                      </ion-item>
+                      <ion-item>
+                        <b>Quantidade</b>
+                      </ion-item>
+                      <div id="count">
+                        <button ion-button clear (click) = "countProduct(1)">
+                         +
+                        </button>
+                        <ion-input type="number" id="#num" [(ngModel)] = "count"></ion-input>
+                        <button ion-button clear (click) = "countProduct(2)">
+                         -
+                        </button>
+                      </div>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+         
+          <ion-fab right top>
+            <button ion-fab  (click)="addOnListActionSheet(produto)">
+              <ion-icon name="cart"></ion-icon>
+            </button>
+          </ion-fab>
+        
+          
+
+          <ion-item>
+            <ion-icon name="bus" item-start large></ion-icon>
+            <h2>Frete</h2>
+            <p>Combinar com vendedor</p>
+          </ion-item>
+          <ion-item>
+              <ion-icon name="card" item-start large></ion-icon>
+              <h2>PagSeguro</h2>
+              <p>12 x R$ {{ parcela }} sem juros</p>
+              <button ion-button icon-left outline item-end>
+                  Comprar
+              </button>
+          </ion-item>
+        
+          <ion-item>
+            <span item-left>Ver no mapa</span>
+            <span item-left>(2.6 mi)</span>
+            <button ion-button icon-left clear item-end>
+              <ion-icon name="navigate"></ion-icon>
+              Start
+            </button>
+          </ion-item>
+        
+        </ion-card>
+    <ion-card *ngIf="produto">
         <ion-item>
     
           <h2><strong>{{ produto.nome  }}</strong></h2>
     
         </ion-item>
     
-        <!-- <img width="80" [src]="produto.imagem">-->
+        <img  [src]="produto.imagem" width="30px">
     
         <ion-card-content>
-          <p>Preco: R$ {{ produto.preco}}</p>
-          <p>Detalhes: {{ produto.descricao}}</p>
-          
-          <!--<button ion-button full (click)="salvarProduto(produto)">Adicionar a lista</button>-->
-          <!--
-          <ion-item *ngIf="listaProdutos">
-            <ion-label>
-              <ion-icon name='list'></ion-icon>
-              Lista
-            </ion-label>
-            <ion-item >
-    
-              <ion-select>
-            
-                <ion-option *ngFor="let lista of listaProdutos" >
-                  {{ lista }}
-                </ion-option>
-            
-              <ion-option>Teste </ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-item>
-        -->
-            <button ion-button full  (click)="addOnListActionSheet(produto)">Adicionar</button>
-          
+          <p><b>Detalhes:</b>  {{ produto.descricao}}</p>
+          <p><b> Fabricante:</b> {{ produto.fabricante}} </p>
+          <p><b> Categoria:</b> {{ produto.genero}} </p>
         </ion-card-content>
       </ion-card>
 </ion-content>

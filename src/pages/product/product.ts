@@ -16,14 +16,18 @@ let lista_produto_key_name = 'lista_produtos';
 })
 export class ProductPage {
   produto: any;
+  count: any = 1;
+  parcela: number;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController) {
   }
 
+  
   ionViewDidLoad() {
     this.produto = this.navParams.get("produto");
+    this.parcela = this.produto.preco / 12;
     console.log('ionViewDidLoad ProductPage');
   }
   getProduto(){
@@ -106,6 +110,16 @@ export class ProductPage {
       buttons: this.itensActionSheet(produto)
     });
     actionSheet.present();
+  }
+  //Contador para preso
+  countProduct(btn){
+    let num = parseInt(this.count);
+    if(btn == 1){
+      num += 1;
+    }else{
+      num -= 1;
+    }
+    this.count = num;
   }
 
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProductPage } from '../product/product';
+//firebase
+import { AngularFireDatabase } from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
 
 /**
  * Generated class for the ProductsPage page.
@@ -15,6 +18,7 @@ let lista_produto_key_name = 'lista_produtos';
   templateUrl: 'products.html',
 })
 export class ProductsPage {
+  items: Observable<any[]>;
   Produtos = [
     {
       id:1, nome:"Violão Elétrico Fender Folk Dreadnought Cd-60 Mahogany Case ",
@@ -196,7 +200,9 @@ export class ProductsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,  
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController, 
+    public db: AngularFireDatabase) {
+      this.items = db.list('produtos').valueChanges();
   }
 
   ionViewDidLoad() {

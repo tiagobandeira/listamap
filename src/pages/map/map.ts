@@ -10,6 +10,7 @@ import {
   Spherical,
   BaseArrayClass
 } from '@ionic-native/google-maps';
+import { Platform } from 'ionic-angular/platform/platform';
 
 /**
  * Generated class for the MapPage page.
@@ -212,14 +213,18 @@ export class MapPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private _ngZone: NgZone) {
+    private _ngZone: NgZone,
+    public platiform: Platform) {
+      this.platiform.ready().then(() => {
+        this.loadMap();
+      });
       this.productsIds = this.navParams.get("cart").produtos;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPage');
     console.log(this.getProductsPoints());
-    this.loadMap();
+    //this.loadMap();
   }
   loadMap() {
     /*
@@ -264,7 +269,8 @@ export class MapPage {
       baseArray.on('set_at').subscribe(() => {
         this._ngZone.run(() => {
           let distanceMeter: number = Spherical.computeLength(baseArray);
-          this.distance = (distanceMeter * 0.000621371192).toFixed(2) + " miles";
+          //this.distance = (distanceMeter * 0.000621371192).toFixed(2) + " miles";
+          this.distance = distanceMeter + " metros";
         });
       });
     });

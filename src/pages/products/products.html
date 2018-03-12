@@ -15,25 +15,21 @@
 
 <ion-content>
   <ion-grid >
-      <ion-row>
-        <ion-col col-12>
-          <h5>Todos</h5>
-        </ion-col>
-      </ion-row>
-      <ion-row >
-        <ion-col col-6 *ngFor="let produto of Produtos">
-          <ion-card (tap)="runProductPage(produto)">
-            <ion-item>
-              <strong> {{ produto.nome }}</strong>
-              <p>R$ {{ produto.preco}}</p>
-            </ion-item>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-fab right bottom id="fab" >
-        <button ion-fab color="danger" (click)="criarListaAlert()" >
-          <ion-icon name="add"></ion-icon>
-        </button>
-    </ion-fab>
+    <ion-row >
+      <ion-col col-6 *ngFor="let item of items | async">
+        <ion-card (tap)="runProductPage(item)">
+          <img [src] = "item.imagem">
+          <ion-item >
+            <strong> {{ item.nome }}</strong>
+            <p>R$ {{ item.preco}}</p>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab right bottom id="fab" >
+      <button ion-fab color="danger" (click)="criarListaAlert()" >
+        <ion-icon name="add"></ion-icon>
+      </button>
+  </ion-fab>
 </ion-content>

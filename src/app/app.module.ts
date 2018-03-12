@@ -19,6 +19,7 @@ import { LoginPage } from '../pages/login/login';
 
 //firebase
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { firebase } from '../credentials/firebase';
 
@@ -39,7 +40,8 @@ import { firebase } from '../credentials/firebase';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebase.config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
