@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <ion-card  *ngFor="let cart of carts" (click) = "openMapPage(cart)">
+  <ion-card  *ngFor="let cart of carts" (click) = "openPaymentPage(cart)">
     <ion-item>
         <ion-icon item-start large color="secondary" name="cart"></ion-icon>
         <h2>{{ cart.nome }}</h2>
@@ -34,4 +34,9 @@
         -->
     </ion-item>
   </ion-card>
+  <ion-fab right bottom id="fab" >
+    <button ion-fab color="secondary" (click)="criarListaAlert()" >
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

@@ -16,6 +16,7 @@ import { ProductsPage } from '../pages/products/products';
 import { ProductPage } from '../pages/product/product';
 import { CartsPage } from '../pages/carts/carts';
 import { LoginPage } from '../pages/login/login';
+import { PaymentPage} from '../pages/payment/payment';
 
 //firebase
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
@@ -34,7 +35,8 @@ import { firebase } from '../credentials/firebase';
     ProductsPage,
     ProductPage,
     CartsPage,
-    LoginPage
+    LoginPage,
+    PaymentPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { firebase } from '../credentials/firebase';
     ProductsPage,
     ProductPage,
     CartsPage,
-    LoginPage
+    LoginPage,
+    PaymentPage
   ],
   providers: [
     StatusBar,

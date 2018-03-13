@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { MapPage } from '../map/map';
 
 //firebase
 import { AngularFireDatabase } from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
+import { PaymentPage } from '../payment/payment';
 /**
  * Generated class for the CartsPage page.
  *
@@ -200,9 +201,12 @@ export class CartsPage {
     }
   ];
   produtos: Observable<any[]>;;
-  constructor(public navCtrl: NavController, public navParams: NavParams, db:AngularFireDatabase) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    db:AngularFireDatabase,
+    public alertCtrl: AlertController,) {
     this.produtos = db.list('produtos').valueChanges();
-    this.findById(1)
   }
 
   ionViewDidEnter() {
@@ -214,6 +218,13 @@ export class CartsPage {
   }
   openMapPage(cart){
     this.navCtrl.push(MapPage, {cart:cart});
+  }
+  openPaymentPage(cart){
+    let data = {
+      cart: cart,
+      price: this.getPriceAll(cart.id)
+    }
+    this.navCtrl.push(PaymentPage, {data:data});
   }
   findById(id){
     let i = 0;
@@ -242,7 +253,83 @@ export class CartsPage {
     for (let i = 0; i < produtos.length; i++) {
       price += this.findByIdProduto(produtos[i][0]).preco * produtos[i][1];
     }
+    this.valueAll = price;
     return price;
+  }
+  getProducts(cartId){
+    let products;
+    for (let i = 0; i < this.carts.length; i++) {
+      if(this.carts[i].id == cartId){
+        products = this.carts[i].produtos;
+      }
+    }
+    return products;
+  }
+  getProductsFireBase(){
+    this.produtos.forEach(element => {
+      console.log(element)
+    });
+  }
+  //Valor da lista
+  getPriceAll(cartId){
+    let price = 0;
+    let products = this.getProducts(cartId);
+    for (let i = 0; i < products.length; i++) {
+      price += this.findByIdProduto(products[i][0]).preco * products[i][1];
+    }
+    return price;
+  }
+  //adicionar cards
+  criarCart(nomeLista){
+    //this.navCtrl.push(CriarListaPage);
+    let dadosLista = {
+      id: 0,
+      nome: nomeLista,
+      produtos:[]
+    };
+    let lista;
+    if(!JSON.parse(localStorage.getItem(lista_produto_key_name))){
+      lista = [dadosLista];
+      localStorage.setItem(lista_produto_key_name, JSON.stringify(lista));
+    }else{
+      lista = JSON.parse(localStorage.getItem(lista_produto_key_name));
+      dadosLista.id = lista.length;//adiciona o id
+      lista.push(dadosLista);
+      localStorage.setItem(lista_produto_key_name, JSON.stringify(lista));
+    }
+    console.log(dadosLista);
+  }
+  criarListaAlert(){
+    let alert = this.alertCtrl.create(
+      {
+        title: "Novo carrinho",
+        message: "Crie um carrinho de compras",
+        inputs: [
+          {
+            name: "nome",
+            placeholder:"Ex: Meu carrinho"
+          }
+        ],
+        buttons: [
+          {
+            text: "Cancelar",
+            handler: data => {
+              console.log("Cancelado");
+            }
+          },
+          {
+            text: "Criar",
+            handler: data => {
+              console.log("Lista criada");
+              //criar lista
+              this.criarCart(data.nome);
+              //console.log(data.nome);
+            }
+          }
+        ]
+      }
+    );
+    alert.present();
   }
 
 }

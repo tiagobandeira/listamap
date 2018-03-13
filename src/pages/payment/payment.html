@@ -6,13 +6,30 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>payment</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>{{cartName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <ion-item >
+      <h1 item-center>Pague com a PayPal</h1>
+      <p item-center>Cartão ou Boleto</p>
+    </ion-item>
+    <ion-item>
+      <h1 item-center>R$ {{ price }}</h1>
+    </ion-item>
+    <button ion-button large-md full color="secondary">Pagar</button>
+  </ion-card>
 
+  <ion-card>
+    <ion-item *ngFor="let produto of products">
+        <ion-img item-left class="imagem" [src]="produto.imagem" ></ion-img>
+        <h2>{{ produto.nome }}</h2>
+        <p> R$ {{ produto.preco }}</p>
+    </ion-item>
+  </ion-card> 
 </ion-content>
