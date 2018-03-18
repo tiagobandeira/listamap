@@ -17,12 +17,16 @@ import { ProductPage } from '../pages/product/product';
 import { CartsPage } from '../pages/carts/carts';
 import { LoginPage } from '../pages/login/login';
 import { PaymentPage} from '../pages/payment/payment';
+import { CartMapPage } from '../pages/cart-map/cart-map';
 
 //firebase
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { firebase } from '../credentials/firebase';
+
+//Paypal
+import { PayPal } from '@ionic-native/paypal';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { firebase } from '../credentials/firebase';
     ProductPage,
     CartsPage,
     LoginPage,
-    PaymentPage
+    PaymentPage,
+    CartMapPage
   ],
   imports: [
     BrowserModule,
@@ -57,13 +62,15 @@ import { firebase } from '../credentials/firebase';
     ProductPage,
     CartsPage,
     LoginPage,
-    PaymentPage
+    PaymentPage,
+    CartMapPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleMaps
+    GoogleMaps,
+    PayPal
   ]
 })
 export class AppModule {}

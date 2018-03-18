@@ -18,14 +18,14 @@ export class MyApp {
     statusBar: StatusBar, 
     splashScreen: SplashScreen,  
     public afAuth: AngularFireAuth) {
-    /*
+    
     this.afAuth.authState.take(1).subscribe(lg => {
       if(lg != null){
         this.rootPage = TabsPage;
       }else{
         this.rootPage = LoginPage;
       }
-    })*/
+    })
     this.rootPage = TabsPage;
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

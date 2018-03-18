@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 //import { HomePage } from '../home/home';
 import { ProductsPage } from '../products/products';
 import { CartsPage } from '../carts/carts';
+import { CartMapPage } from '../cart-map/cart-map';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -12,7 +13,7 @@ import { CartsPage } from '../carts/carts';
 export class TabsPage {
   tab0Root = ProductsPage;
   tab1Root = CartsPage;
-  //tab2Root = AboutPage;
+  tab2Root = CartMapPage;
   //tab3Root = ContactPage;
 
   constructor() {

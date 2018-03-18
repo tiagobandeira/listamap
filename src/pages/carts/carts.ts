@@ -4,7 +4,7 @@ import { MapPage } from '../map/map';
 
 //firebase
 import { AngularFireDatabase } from 'angularfire2/database';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { PaymentPage } from '../payment/payment';
 /**
  * Generated class for the CartsPage page.
@@ -22,6 +22,7 @@ let lista_produto_key_name = 'lista_produtos';
 export class CartsPage {
   public carts;
   public valueAll;
+  
   Produtos = [
     {
       id:1, nome:"Violão Elétrico Fender Folk Dreadnought Cd-60 Mahogany Case ",
@@ -200,6 +201,8 @@ export class CartsPage {
       imagem: "../assets/imgs/batman-ak.jpg"
     }
   ];
+  
+  //Produtos;
   produtos: Observable<any[]>;;
   constructor(
     public navCtrl: NavController, 
@@ -208,7 +211,7 @@ export class CartsPage {
     public alertCtrl: AlertController,) {
     this.produtos = db.list('produtos').valueChanges();
   }
-
+  
   ionViewDidEnter() {
     this.carts = this.getProdutoLista();
     console.log( this.carts);
@@ -266,9 +269,14 @@ export class CartsPage {
     return products;
   }
   getProductsFireBase(){
+    let i = 0;
+    let produtos;
     this.produtos.forEach(element => {
-      console.log(element)
+      produtos.push(element[i]);
+      console.log(element[i])
+      i += 1;
     });
+    return produtos;
   }
   //Valor da lista
   getPriceAll(cartId){
